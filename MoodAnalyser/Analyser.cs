@@ -9,9 +9,9 @@ namespace MoodAnalyser
         public string Analyzer(string mood)
         {
             if (mood.Contains("sad"))
-                return "sad";
+                return "SAD";
             else
-                return "happy";
+                return "HAPPY";
         }
     }
 }
