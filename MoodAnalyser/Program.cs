@@ -7,8 +7,8 @@ namespace MoodAnalyser
         static void Main(string[] args)
         {
             Console.WriteLine("This is Mood Analyser Project");
-            Analyser mood = new Analyser();
-            Console.WriteLine(mood.Analyzer(" I am sad mood "));
+            Analyser mood = new Analyser(" I am in sad mood " );
+            Console.WriteLine(mood.Analyzer());
             Console.ReadLine();
         }
     }
