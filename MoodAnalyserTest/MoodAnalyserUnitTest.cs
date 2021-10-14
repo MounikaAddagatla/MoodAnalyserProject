@@ -5,34 +5,40 @@ namespace MoodAnalyserTest
 {
     public class MoodAnalyserUnitTest
     {
+        [Test]
+        public void GivenAnalyserClassName_ShouldReturnAnalyserObject()
+        {
+            object expected = new Analyser();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.Analyser", "Analyser");
+            expected.Equals(obj);
 
-        [Test]
-        public void GivenSad_ShouldReturn_SadMood()
-        {
-            Analyser test = new Analyser("I am in sad mood ");
-            string result = test.Analyzer();
-            Assert.AreEqual("SAD", result);
         }
         [Test]
-        public void GivenAny_ShouldReturn_HappyMood()
+        public void GivenWrongClassName_ShouldThrowException()
         {
-            Analyser test = new Analyser("I am in any Mood");
-            string result = test.Analyzer();
-            Assert.AreEqual("HAPPY", result);
+            string expected = "Class not found";
+            try
+            {
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.Analyser", "Analyser");
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+
         }
         [Test]
-        public void GivenEmpty_Shouldthrow_CustomExceptionEmpty()
+        public void GivenClassConstructerNotProper_ShouldThrowException()
         {
-            Analyser test = new Analyser(" ");
-            string result = test.Analyzer();
-            Assert.AreEqual("HAPPY", result);
-        }
-        [Test]
-        public void GivenNull_Shouldthrow_CustomExceptionNull()
-        {
-            Analyser test = new Analyser(null);
-            string result = test.Analyzer();
-            Assert.AreEqual("HAPPY", result);
+            string expected = "Constructor not found";
+            try
+            {
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.Analyser", "Analyser");
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
     }
 }
