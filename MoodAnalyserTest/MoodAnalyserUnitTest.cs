@@ -21,7 +21,14 @@ namespace MoodAnalyserTest
             Assert.AreEqual("HAPPY", result);
         }
         [Test]
-        public void GivenNull_ShouldReturn_HappyMood()
+        public void GivenEmpty_Shouldthrow_CustomExceptionEmpty()
+        {
+            Analyser test = new Analyser(" ");
+            string result = test.Analyzer();
+            Assert.AreEqual("HAPPY", result);
+        }
+        [Test]
+        public void GivenNull_Shouldthrow_CustomExceptionNull()
         {
             Analyser test = new Analyser(null);
             string result = test.Analyzer();
